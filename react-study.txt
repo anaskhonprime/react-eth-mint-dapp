@@ -1,0 +1,51 @@
+
+1. React 쓰는 이유
+
+  - Refresh 없이 페이지 안에 Smooth 이동
+  - 사용자 많음
+  - 문법 어려움
+  - Jsx 문법 사용 => 일반 "class" 대신 "classname" 사용
+
+
+  ** eslint warming 보기 싫다면 그냥 App.js 시작 1라인으로 다음 코디 사용
+  -
+    - /* eslint-disable */  
+
+
+2. 이미지 사용
+
+ ** import images 
+ - import logo from './logo.svg';
+
+ ** use image tag 
+ - <img src={logo} />
+
+ **css 사용
+  <img src={logo} style={{color: 'white'}} />
+
+ ** camelCase 문법 => font-size 대시 fontSize 사용
+
+
+ 
+3. React state | useState 
+
+ ** 장점 : 새로고침 필요 없이 자동으로 rendering 됩니다. 일단 let a ="Hello" 값이 a="Hi"으로 수정했을때 새고침해야 
+          값이 바꾸는데 state으로 자동으로 렌더링 됩니다.
+
+ ** state은 데이터 대신 사용한 데이터 저장 공간임. vue에서 있는 data(){react{data :"hello",}}이랑 동일함
+
+
+ ** React state 사용하자면 import부터 시작
+
+    - import React, {useState} from 'react';
+
+ ** 데이터로 저장 법
+
+  - let [data,function] = useState("Hello, world!")
+
+  여기서 data은 state (hello이란) , function는 state 데이터 변경 함수 
+
+
+ ** 아주 편한 점은 다양한 object 배열 저장 가능
+ 
+  -let [data,function] = useState(['Home', 'About', 'Projects', 'Contact'])

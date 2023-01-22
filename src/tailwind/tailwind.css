@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.main_bg {
+    background: rgb(152, 77, 56);
+    background: linear-gradient( 95deg, rgba(151, 77, 55, 1) 0%, rgba(24, 30, 65, 1) 50%);
+}
+
+.btn_primary {
+    background: rgb(183, 92, 255);
+    background: linear-gradient( 193deg, rgba(183, 92, 255, 1) 15%, rgba(103, 26, 228, 1) 89%);
+}
+
+.btn_primary_outline {
+    background: transparent;
+    border: 3px solid linear-gradient( 193deg, rgba(183, 92, 255, 1) 15%, rgba(103, 26, 228, 1) 89%);
+}

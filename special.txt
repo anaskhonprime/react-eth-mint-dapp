@@ -1,15 +1,17 @@
 
 1. Tailwind CSS 
 
-  - Install the Tailwind Css
+  **Install the Tailwind Css
 
-  npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
+   - npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
 
-  - init ( tailwind.config.js와 postcss.config.js 자동 생성 )
+  
+  ** init ( tailwind.config.js와 postcss.config.js 자동 생성 )
 
-  npx tailwindcss init -p
+   - npx tailwindcss init -p
 
-  - set tailwind.config.js as
+  
+  ** set tailwind.config.js as
 
    module.exports = {
     content: ["./src/**/*.{html,js,jsx,ts,tsx}"],
@@ -19,7 +21,8 @@
     plugins: [],
     };
 
-    - create src/tailwind.css, add below the code
+
+  ** create src/tailwind.css, add below the code
 
     @tailwind base;
     @tailwind components;
@@ -30,13 +33,19 @@
     import "./tailwind.css";
 
 
+  ** Add scripts to public/index.html body tag 
+
+    - <script src="https://unpkg.com/flowbite@1.6.0/dist/flowbite.min.js"></script>
+    - <script src="https://cdn.tailwindcss.com"></script>  
+
+
 
 2. Github에서 메인 언에 관리하는 처음에 CSS 나오는 경우가 많아 다음 과정에서 push할때
    css 파일을 언어 부분에서 안보이게 설정합니다.
 
-   - create file .gitattributes
+  ** create file .gitattributes
 
-   - add code to .gitattributes
+  ** add code to .gitattributes
 
    *.java linguist-detectable=true
    *.js linguist-detectable=true
@@ -45,7 +54,48 @@
    *.css linguist-detectable=false    
 
 
-    
+3. Tailwind Css에서 같이 사용할 다양한 UI들 담아진 Flowbite 세팅
+
+   ** Flowbite is a most popular open-source library of interactive UI components built with the utility classes from Tailwind CSS
+
+   ** Official documentation
+
+      < https://flowbite.com/docs/getting-started/react/ >
+
+  
+  ** installation
+
+    - npm install flowbite flowbite-react 
+
+
+  ** Add Plugin tailwind.config.js
+
+    module.exports = {
+
+    plugins: [
+        require('flowbite/plugin')
+     ]
+
+      content: [
+        // ...
+        'node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}'
+      ]
+
+    }  
+
+
+  ** Save and run 
+
+   - npm start  
+
+
+
+
+
+
+
+
+
 
 
 
