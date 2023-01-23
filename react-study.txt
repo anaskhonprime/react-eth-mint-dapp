@@ -48,4 +48,32 @@
 
  ** 아주 편한 점은 다양한 object 배열 저장 가능
  
-  -let [data,function] = useState(['Home', 'About', 'Projects', 'Contact'])
+  - let [data,function] = useState(['Home', 'About', 'Projects', 'Contact'])
+
+
+ ** let [data,function] = useState(0); 코드에서 있는 function 기능을 직접 data 값을 재렌더링 
+    할때 사용합니다.간단한 좋아요 버튼을 누를때마다 데이터 값이 1로 층가하려면 그대로 state 문법을 
+    사용하면 됩니다.
+
+    <p>Likes <span onClick={ () => {function(data +1 )}} >👍</span> 0 </p> 
+
+
+ ** state을 값을 복사해서 사용할 때 deep copy 기능 사용합니다.
+    예는 들어, [data, function] state의 0번쨰 'Home'을 => 'Logo'로 바꿔주는 함수를 생성하자면
+    먼저, 기존 data 값의 0번쨰 값만 새로운 배열로 저장해서 갔다 사용하면 됩니다.
+
+    let [data,function] = useState(['Home', 'About', 'Projects', 'Contact'])
+
+    function editArray() {
+
+      let newArray = [...data];
+      newArray[0] = 'Logo',
+
+      function(newArray)      
+    }
+
+    이렇게 하는 이유는 리액트 사용 원칙으로 state 데이터는 직접 수정하지 않고 
+    es6 새로운 복사 deep copy 기능으로 복사했다가 다시 사용해야합니다.
+
+    
+        

@@ -1,10 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,300;1,400;1,500&display=swap');
 .main_bg {
     background: rgb(152, 77, 56);
     background: linear-gradient( 95deg, rgba(151, 77, 55, 1) 0%, rgba(24, 30, 65, 1) 50%);
 }
 
+.btn_primary {
+    background: rgb(183, 92, 255);
+    background: linear-gradient( 193deg, rgba(183, 92, 255, 1) 15%, rgba(103, 26, 228, 1) 89%);
+}
+
+.btn_primary:hover {
+    background: rgb(125, 51, 186);
+    background: linear-gradient( 193deg, rgb(131, 65, 185) 15%, rgbargb(104, 55, 183));
+}
+
+.btn_primary_outline {
+    background: transparent;
+    border: 3px solid linear-gradient( 193deg, rgba(183, 92, 255, 1) 15%, rgba(103, 26, 228, 1) 89%);
+}
+
 .App {
     text-align: center;
+    font-family: 'Poppins', sans-serif;
 }
 
 .App-logo {
