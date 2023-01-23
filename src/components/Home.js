@@ -5,6 +5,8 @@ import Navbar from "./Navbar";
 import Header from "./Header";
 import Guide from "./Guide";
 import About from "./About";
+import Faq from "./Faq"
+import Team from "./Team"
 
 
 function Home() {
@@ -14,6 +16,8 @@ function Home() {
       <Header />
       <Guide/>
       <About/>
+      <Team/>
+      
     </div>
   );
 }

@@ -13,11 +13,11 @@ function Guide() {
         </div>
         <div class="p-5">
           <a href="#">
-            <h5 class="mb-6 px-2 text-2xl font-bold tracking-tight text-white dark:text-white">
+            <h5 class="mb-6 px-2 text-xl lg:text-2xl font-bold tracking-tight text-white dark:text-white">
               Noteworthy technology acquisitions 2023
             </h5>
           </a>
-          <p class="mb-6  px-2 font-normal text-[#ffffff66] dark:text-gray-400">
+          <p class="mb-6 text-base lg:text-lg h-20 px-2 font-normal text-[#ffffff66] dark:text-gray-400">
             5,555 unique collectible characters with proof of ownership stored
             on the Ethereum blockchain.
           </p>
@@ -49,11 +49,11 @@ function Guide() {
         </div>
         <div class="p-5">
           <a href="#">
-            <h5 class="mb-6 px-2 text-2xl font-bold tracking-tight text-white dark:text-white">
+            <h5 class="mb-6 px-2 text-xl lg:text-2xl font-bold tracking-tight text-white dark:text-white">
               The project that inspired the modern CryptoArt movement
             </h5>
           </a>
-          <p class="mb-6  px-2 font-normal text-[#ffffff66] dark:text-gray-400">
+          <p class="mb-6 text-base lg:text-lg h-20 px-2 font-normal text-[#ffffff66] dark:text-gray-400">
             The NFTPRIME is art images, generated algorithmically. Most are
             punky-looking guys and girls
           </p>
@@ -85,12 +85,12 @@ function Guide() {
         </div>
         <div class="p-5">
           <div>
-            <h5 class="mb-6 px-2 text-2xl font-bold tracking-tight text-white dark:text-white">
+            <h5 class="mb-6 px-2 text-xl lg:text-2xl font-bold tracking-tight text-white dark:text-white">
               The Project pre-date the ERC-721 standard and are a custom
               contract
             </h5>
           </div>
-          <p class="mb-6  px-2 font-normal text-[#ffffff66] dark:text-gray-400">
+          <p class="mb-6 text-base lg:text-lg h-20 px-2 font-normal text-[#ffffff66] dark:text-gray-400">
             Project pre-date the ERC-721 standard and are a custom contract, it
             doesn't comply with any standards.
           </p>

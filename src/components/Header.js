@@ -10,9 +10,9 @@ function Header() {
             <div class="hidden sm:mb-8 sm:flex sm:justify-center">
               <div class="relative overflow-hidden rounded-full py-1.5 px-4 text-sm leading-6 ring-1 ring-gray-900/10 hover:ring-gray-900/20"></div>
             </div>
-            
+
             <div>
-              <h1 class="text-3xl lg:text-6xl font-bold tracking-tight text-center lg:text-center ">
+              <h1 class="text-3xl  lg:text-6xl font-extrabold tracking-normal  text-center lg:text-center  py-8">
                 The project that inspired the modern CryptoArt movement
               </h1>
               <p class="my-10 text-lg lg:text-xl leading-8 px-3 lg:px-5 text-gray-300  text-center lg:text-center">
