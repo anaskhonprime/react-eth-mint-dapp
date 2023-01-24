@@ -1,42 +1,48 @@
 /* eslint-disable */
 import React, { useState } from "react";
+import { Fade,Reveal } from "react-awesome-reveal";
+import { fadeInDownShorter, fadeInLeft, fadeInUp } from "./animation";
+
 
 function Header() {
 
     return (
-      <div class="relative md:mt-2 mt-12 px-8 lg:px-8">
-        <div class="mx-auto max-w-3xl pt-32 pb-32 sm:pt-48 sm:pb-40">
+      <div className="relative md:mt-2 mt-12 px-8 lg:px-8">
+        <div className="mx-auto max-w-3xl pt-32 pb-32 sm:pt-48 sm:pb-40">
           <div>
-            <div class="hidden sm:mb-8 sm:flex sm:justify-center">
-              <div class="relative overflow-hidden rounded-full py-1.5 px-4 text-sm leading-6 ring-1 ring-gray-900/10 hover:ring-gray-900/20"></div>
+            <div className="hidden sm:mb-8 sm:flex sm:justify-center">
+              <div className="relative overflow-hidden rounded-full py-1.5 px-4 text-sm leading-6 ring-1 ring-gray-900/10 hover:ring-gray-900/20"></div>
             </div>
-
             <div>
-              <h1 class="text-3xl  lg:text-6xl font-extrabold tracking-normal  text-center lg:text-center  py-8">
-                The project that inspired the modern CryptoArt movement
-              </h1>
-              <p class="my-10 text-lg lg:text-xl leading-8 px-3 lg:px-5 text-gray-300  text-center lg:text-center">
-                5,555 unique collectible characters with proof of ownership
-                stored on the Ethereum blockchain.
-              </p>
-              <div class="my-10 flex gap-x-4 justify-center">
-                <a
-                  href="#"
-                  class="inline-block btn_primary rounded-xl px-5 py-2 lg:px-10 lg:py-2 text-base lg:text-lg font-semibold leading-7 text-white shadow-sm">
-                  Mint Now
-                  <span class="text-indigo-200" aria-hidden="true"></span>
-                </a>
-                <a
-                  href="#"
-                  class="inline-block rounded-xl border border-white px-5 py-2 lg:px-10 lg:py-2 font-semibold leading-7 text-white shadow-sm  hover:bg-gray-600 ">
+              <Reveal keyframes={fadeInDownShorter} duration={700} delay={300}>
+                <h1 className="text-3xl lg:text-6xl font-extrabold tracking-normal  text-center lg:text-center py-8">
+                  The project that inspired the modern CryptoArt movement
+                </h1>
+              </Reveal>
+             <Reveal keyframes={fadeInDownShorter} duration={700} delay={500}>
+                <p className="my-10 text-lg lg:text-xl leading-8 px-3 lg:px-5 text-gray-300  text-center lg:text-center">
+                  5,555 unique collectible characters with proof of ownership
+                  stored on the Ethereum blockchain.
+                </p>
+              </Reveal>
+              <div className="my-10 flex gap-x-4 justify-center">
+                <Reveal keyframes={fadeInUp} duration={1000} delay={900}>
+                  <a className="inline-block btn_primary rounded-xl px-5 py-2 lg:px-10 lg:py-2 text-base lg:text-lg font-semibold leading-7 text-white shadow-sm">
+                    Mint Now
+                    <span className="text-indigo-200" aria-hidden="true"></span>
+                  </a>
+                </Reveal>
+                <Reveal keyframes={fadeInUp} duration={1000} delay={900}>
+                <a className="inline-block rounded-xl border border-white px-5 py-2 lg:px-10 lg:py-2 font-semibold leading-7 text-white shadow-sm  hover:bg-gray-600 ">
                   Learn More
-                  <span class="text-gray-400" aria-hidden="true"></span>
+                  <span className="text-gray-400" aria-hidden="true"></span>
                 </a>
+                </Reveal>
               </div>
             </div>
-            <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]">
+            <div className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]">
               <svg
-                class="relative left-[calc(50%+3rem)] h-[21.1875rem] max-w-none -translate-x-1/2 sm:left-[calc(50%+36rem)] sm:h-[42.375rem]"
+                className="relative left-[calc(50%+3rem)] h-[21.1875rem] max-w-none -translate-x-1/2 sm:left-[calc(50%+36rem)] sm:h-[42.375rem]"
                 viewBox="0 0 1155 678"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg">

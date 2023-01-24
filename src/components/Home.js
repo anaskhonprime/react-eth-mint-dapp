@@ -7,6 +7,7 @@ import Guide from "./Guide";
 import About from "./About";
 import Faq from "./Faq"
 import Team from "./Team"
+import Footer from "./Footer";
 
 
 function Home() {
@@ -17,6 +18,7 @@ function Home() {
       <Guide/>
       <About/>
       <Team/>
+      <Footer/>
       
     </div>
   );

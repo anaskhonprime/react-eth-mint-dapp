@@ -136,7 +136,7 @@ function Team() {
           </div>
           <div className="text-left lg:text-center ">
             <p class="mb-3 text-base lg:text-2xl font-normal px-3 lg:px-[25%] opacity-70 dark:text-gray-400">
-              Here are the biggest enterprise technology acquisitions of 2021 so
+              Here are the biggest enterprise technology acquisitions of 2023 so
               far, in reverse chronological order.
             </p>
           </div>
