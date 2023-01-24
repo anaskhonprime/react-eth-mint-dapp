@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { Fade,Reveal } from "react-awesome-reveal";
 import { fadeInDownShorter, fadeInLeft, fadeInUp } from "./animation";
 
+import { header_data } from "../prime";
+
 
 function Header() {
 
@@ -16,13 +18,12 @@ function Header() {
             <div>
               <Reveal keyframes={fadeInDownShorter} duration={700} delay={300}>
                 <h1 className="text-3xl lg:text-6xl font-extrabold tracking-normal  text-center lg:text-center py-8">
-                  The project that inspired the modern CryptoArt movement
+                  {header_data.intro}
                 </h1>
               </Reveal>
-             <Reveal keyframes={fadeInDownShorter} duration={700} delay={500}>
+              <Reveal keyframes={fadeInDownShorter} duration={700} delay={500}>
                 <p className="my-10 text-lg lg:text-xl leading-8 px-3 lg:px-5 text-gray-300  text-center lg:text-center">
-                  5,555 unique collectible characters with proof of ownership
-                  stored on the Ethereum blockchain.
+                  {header_data.headerText}
                 </p>
               </Reveal>
               <div className="my-10 flex gap-x-4 justify-center">
@@ -33,10 +34,10 @@ function Header() {
                   </a>
                 </Reveal>
                 <Reveal keyframes={fadeInUp} duration={1000} delay={900}>
-                <a className="inline-block rounded-xl border border-white px-5 py-2 lg:px-10 lg:py-2 font-semibold leading-7 text-white shadow-sm  hover:bg-gray-600 ">
-                  Learn More
-                  <span className="text-gray-400" aria-hidden="true"></span>
-                </a>
+                  <a className="inline-block rounded-xl border border-white px-5 py-2 lg:px-10 lg:py-2 font-semibold leading-7 text-white shadow-sm  hover:bg-gray-600 ">
+                    Learn More
+                    <span className="text-gray-400" aria-hidden="true"></span>
+                  </a>
                 </Reveal>
               </div>
             </div>
