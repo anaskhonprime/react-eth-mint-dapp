@@ -1,8 +1,29 @@
 /* eslint-disable */
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+
 
 function Navbar() {
   let [navbar] = useState(["About", "Services", "Contact", "Connect Wallet"]);
+
+  var account = null;
+  var contract = null;
+  var mintPrice = 0;
+  var totalPrice = 0;
+  var totalMinted = 0;
+  var mintIndexForSale = 0;
+  var limitSaleAmount = 0;
+
+  const connect = async () => {
+    if (window.ethereum) {
+      await window.ethereum.send("eth_requestAccounts");
+      window.web3 = new Web3(window.ethereum);
+
+      var accounts = await web3.eth.getAccounts();
+      account = accounts[0];
+      contract = new web3.eth.Contract(ABI, ADDRESS);
+    }
+  };
 
   return (
     <div className="">
@@ -16,6 +37,7 @@ function Navbar() {
           </div>
           <div className="flex md:order-2">
             <button
+              onClick={connect}
               type="button"
               className=" hidden lg:flex font-medium text-base lg:font-semibold lg:text-xl py-2 px-5 text-center rounded-xl btn_primary text-gray-200 shadow-sm ">
               {navbar[3]}
@@ -47,7 +69,7 @@ function Navbar() {
               <li>
                 <a
                   href="#"
-                  className="block py-2 pl-3 pr-4 text-xl font-medium text-purple-200 rounded md:bg-transparent  md:p-0 dark:text-white"
+                  className="block py-2 mx-2 text-xl font-semibold text-purple-200 rounded md:bg-transparent  md:p-0 dark:text-white"
                   aria-current="page">
                   Home
                 </a>
@@ -55,27 +77,27 @@ function Navbar() {
               <li>
                 <a
                   href="#"
-                  className="block py-2 pl-3 pr-4 text-xl font-medium rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-purple-200 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
+                  className="block py-2 mx-2 text-xl font-semibold rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-purple-200 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
                   {navbar[0]}
                 </a>
               </li>
               <li>
                 <a
                   href="#"
-                  className="block py-2 pl-3 pr-4 text-xl font-medium rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-purple-200 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
+                  className="block py-2 mx-2 text-xl font-semibold rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-purple-200 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
                   {navbar[1]}
                 </a>
               </li>
               <li>
                 <a
                   href="#"
-                  className="block py-2 pl-3 pr-4 text-xl font-medium rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-purple-200 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
+                  className="block py-2 mx-2 text-xl font-semibold rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-purple-200 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
                   {navbar[2]}
                 </a>
               </li>
               <button
-                type="button"
-                className="flex lg:hidden font-medium text-xl lg:font-semibold lg:text-xl py-2 px-5 text-center rounded-xl btn_primary text-gray-200 shadow-sm ">
+                onClick={connect}
+                className="flex lg:hidden font-medium text-xl lg:font-semibold lg:text-xl py-2 px-5 text-center rounded-xl btn_primary  text-gray-200 shadow-sm ">
                 {navbar[3]}
               </button>
             </ul>

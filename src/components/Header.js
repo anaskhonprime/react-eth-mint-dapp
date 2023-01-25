@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { Fade,Reveal } from "react-awesome-reveal";
 import { fadeInDownShorter, fadeInLeft, fadeInUp } from "./animation";
+import { Link } from "react-router-dom";
 
 import { header_data } from "../prime";
 
@@ -28,10 +29,11 @@ function Header() {
               </Reveal>
               <div className="my-10 flex gap-x-4 justify-center">
                 <Reveal keyframes={fadeInUp} duration={1000} delay={900}>
-                  <a className="inline-block btn_primary rounded-xl px-5 py-2 lg:px-10 lg:py-2 text-base lg:text-lg font-semibold leading-7 text-white shadow-sm">
+                  
+                  <Link to="/mint" className="inline-block btn_primary rounded-xl px-5 py-2 lg:px-10 lg:py-2 text-base lg:text-lg font-semibold leading-7 text-white shadow-sm">
                     Mint Now
                     <span className="text-indigo-200" aria-hidden="true"></span>
-                  </a>
+                  </Link>
                 </Reveal>
                 <Reveal keyframes={fadeInUp} duration={1000} delay={900}>
                   <a className="inline-block rounded-xl border border-white px-5 py-2 lg:px-10 lg:py-2 font-semibold leading-7 text-white shadow-sm  hover:bg-gray-600 ">
