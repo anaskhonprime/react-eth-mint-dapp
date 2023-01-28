@@ -1,0 +1,18 @@
+{
+    "CONTRACT_ADDRESS": "0xDC76D0ea6A8D7103b3db689a9B3a53DE4f614856",
+    "SCAN_LINK": "https://goerli.etherscan.io/address/0xdc76d0ea6a8d7103b3db689a9b3a53de4f614856",
+    "NETWORK": {
+        "NAME": "Geoeli",
+        "SYMBOL": "Eth",
+        "ID": 5
+    },
+    "NFT_NAME": "TEST",
+    "SYMBOL": "NCC",
+    "MAX_SUPPLY": 5000,
+    "WEI_COST": 500000000000000,
+    "DISPLAY_COST": 0.0005,
+    "GAS_LIMIT": 300000,
+    "MARKETPLACE": "Opeansea",
+    "MARKETPLACE_LINK": "https://opensea.io/"
+
+}

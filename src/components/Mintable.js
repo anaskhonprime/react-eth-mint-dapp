@@ -1,44 +1,217 @@
 /* eslint-disable */
-
-import React, { useState, useEffect } from "react";
 import { Fade, Reveal } from "react-awesome-reveal";
 import { fadeInDownShorter, fadeInLeft, fadeInUp } from "./animation";
 import { header_data } from "../prime";
 
+import React, { useEffect, useState, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+
+const truncate = (input, len) =>
+  input.length > len ? `${input.substring(0, len)}...` : input; 
+
+import Web3 from "web3";
+
+
+
+import { Panel, PanelGroup } from "rsuite";
+import { Carousel } from "rsuite";
+import { Notification, toaster } from "rsuite";
+import { Loader } from "rsuite";
+import { Badge } from "rsuite";
+
 import { ethers } from "ethers";
-
-const CONTRACT_ADDRESS = "0xDC76D0ea6A8D7103b3db689a9B3a53DE4f614856";
-const NETWORK = "Ethereum Georly Testnet";
-const NETWORK_VERSION = 5;
-const SCANNER_LINK = "https://goerli.etherscan.io";
-
-
-
 
 function Mintable() {
 
+  const connect = () => {
+    return async dispatch => {
+      dispatch(connectRequest());
+      const abiResponse = await fetch("/assets/abi.json", {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      });
+      const abi = await abiResponse.json();
+      const configResponse = await fetch("/assets/config.json", {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      });
+      const CONFIG = await configResponse.json();
+      const { ethereum } = window;
+      const metamaskIsInstalled = ethereum && ethereum.isMetaMask;
+      if (metamaskIsInstalled) {
+        Web3EthContract.setProvider(ethereum);
+        let web3 = new Web3(ethereum);
+        try {
+          const accounts = await ethereum.request({
+            method: "eth_requestAccounts",
+          });
+          const networkId = await ethereum.request({
+            method: "net_version",
+          });
+          if (networkId == CONFIG.NETWORK.ID) {
+            const SmartContractObj = new Web3EthContract(
+              abi,
+              CONFIG.CONTRACT_ADDRESS
+            );
+            dispatch(
+              connectSuccess({
+                account: accounts[0],
+                smartContract: SmartContractObj,
+                web3: web3,
+              })
+            );
+            // Add listeners start
+            ethereum.on("accountsChanged", accounts => {
+              dispatch(updateAccount(accounts[0]));
+            });
+            ethereum.on("chainChanged", () => {
+              window.location.reload();
+            });
+            // Add listeners end
+          } else {
+            dispatch(
+              connectFailed(`Change network to ${CONFIG.NETWORK.NAME}.`)
+            );
+          }
+        } catch (err) {
+          dispatch(connectFailed("Something went wrong."));
+        }
+      } else {
+        dispatch(connectFailed("Install Metamask."));
+      }
+    };
+  };
 
-  const [currentAccount, setCurrentAccount] = useState("");
-  const [miningAnimation, setMiningAnimation] = useState(false);
-  const [mintTotal, setMintTotal] = useState(totalMinted);
-  const [currentNetwork, setCurrentNetwork] = useState("");
-  const [isLoading, toggleIsLoading] = useState(false);
-  const TOTAL_MINT_COUNT = 500;
+  const fetchData = () => {
+    return async dispatch => {
+      dispatch(fetchDataRequest());
+      try {
+        let totalSupply = await store
+          .getState()
+          .blockchain.smartContract.methods.totalSupply()
+          .call();
+        // let cost = await store
+        //   .getState()
+        //   .blockchain.smartContract.methods.cost()
+        //   .call();
 
-  
-const isOnCorrectNetwork = async () => {
-  const chainId = await getNetwork();
-  return chainId === NETWORK_VERSION;
-};
+        dispatch(
+          fetchDataSuccess({
+            totalSupply,
+            // cost,
+          })
+        );
+      } catch (err) {
+        console.log(err);
+        dispatch(fetchDataFailed("Could not load data from contract."));
+      }
+    };
+  };
 
-const getNetwork = async () => {
-  const provider = new ethers.providers.Web3Provider(window.ethereum);
+  const dispatch = useDispatch();
+  const blockchain = useSelector(state => state.blockchain);
+  const data = useSelector(state => state.data);
+  const [claimingNft, setClaimingNft] = useState(false);
+  const [feedback, setFeedback] = useState(`Click buy to mint your NFT.`);
+  const [mintAmount, setMintAmount] = useState(1);
 
-  const network = await provider.getNetwork();
-  const chainId = network.chainId;
+  const [CONFIG, SET_CONFIG] = useState({
+    CONTRACT_ADDRESS: "",
+    SCAN_LINK: "",
+    NETWORK: {
+      NAME: "Georle",
+      SYMBOL: "ETH",
+      ID: 5,
+    },
+    NFT_NAME: "TEST",
+    SYMBOL: "TEST",
+    MAX_SUPPLY: 5000,
+    WEI_COST: 500000000000000,
+    DISPLAY_COST: 0.0005,
+    GAS_LIMIT: 30000000,
+    MARKETPLACE: "Opensea",
+    MARKETPLACE_LINK: "https://opensea.io",
+    SHOW_BACKGROUND: false,
+  });
 
-  return chainId;
-};
+
+  const claimNFTs = () => {
+    let cost = CONFIG.WEI_COST;
+    let gasLimit = CONFIG.GAS_LIMIT;
+    let totalCostWei = String(cost * mintAmount);
+    let totalGasLimit = String(gasLimit * mintAmount);
+    console.log("Cost: ", totalCostWei);
+    console.log("Gas limit: ", totalGasLimit);
+    setFeedback(`Minting your ${CONFIG.NFT_NAME}...`);
+    setClaimingNft(true);
+    blockchain.smartContract.methods
+      .mint(mintAmount)
+      .send({
+        gasLimit: String(totalGasLimit),
+        to: CONFIG.CONTRACT_ADDRESS,
+        from: blockchain.account,
+        value: totalCostWei,
+      })
+      .once("error", err => {
+        console.log(err);
+        setFeedback("Sorry, something went wrong please try again later.");
+        setClaimingNft(false);
+      })
+      .then(receipt => {
+        console.log(receipt);
+        setFeedback(
+          `WOW, the ${CONFIG.NFT_NAME} is yours! go visit Opensea.io to view it.`
+        );
+        setClaimingNft(false);
+        dispatch(fetchData(blockchain.account));
+      });
+  };
+
+  const decrementMintAmount = () => {
+    let newMintAmount = mintAmount - 1;
+    if (newMintAmount < 1) {
+      newMintAmount = 1;
+    }
+    setMintAmount(newMintAmount);
+  };
+
+  const incrementMintAmount = () => {
+    let newMintAmount = mintAmount + 1;
+    if (newMintAmount > 10) {
+      newMintAmount = 10;
+    }
+    setMintAmount(newMintAmount);
+  };
+
+  const getData = () => {
+    if (blockchain.account !== "" && blockchain.smartContract !== null) {
+      dispatch(fetchData(blockchain.account));
+    }
+  };
+
+  const getConfig = async () => {
+    const configResponse = await fetch("/config/config.json", {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
+    const config = await configResponse.json();
+    SET_CONFIG(config);
+  };
+
+  useEffect(() => {
+    getConfig();
+  }, []);
+
+  useEffect(() => {
+    getData();
+  }, [blockchain.account]);
 
 
 
@@ -129,7 +302,11 @@ const getNetwork = async () => {
                   <div className="pb-5 tracking-wide">
                     <div className="flex items-center justify-center">
                       <h5
-                        onClick={connect}
+                        onClick={e => {
+                          e.preventDefault();
+                          dispatch(connect());
+                          getData();
+                        }}
                         className="text-center border cursor-pointer border-gray-400 rounded-xl mb-6 px-32 py-3 text-xl lg:text-xl font-bold tracking-tight text-white dark:text-white">
                         Connect Wallet
                       </h5>
@@ -157,7 +334,11 @@ const getNetwork = async () => {
 
                     <div className="flex justify-center mt-5">
                       <button
-                        onClick={mint}
+                        onClick={e => {
+                          e.preventDefault();
+                          claimNFTs();
+                          getData();
+                        }}
                         className="inline-flex cursor-pointer items-center ml-2 my-5 px-12 py-3 text-sm lg:text-xl text-medium font-medium text-center text-white bg-purple-700 rounded-2xl hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                         Mint Now
                       </button>

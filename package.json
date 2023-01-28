@@ -16,8 +16,14 @@
         "react-awesome-reveal": "^4.2.3",
         "react-back-to-top-button": "^0.0.14",
         "react-dom": "^18.2.0",
+        "react-redux": "^8.0.5",
         "react-router-dom": "^6.7.0",
-        "react-scripts": "5.0.1"
+        "react-scripts": "5.0.1",
+        "redux-thunk": "^2.4.2",
+        "rsuite": "^5.25.0",
+        "stream-http": "^3.2.0",
+        "web-vitals": "^3.1.1",
+        "web3": "^1.8.1"
     },
     "scripts": {
         "start": "react-scripts start",
