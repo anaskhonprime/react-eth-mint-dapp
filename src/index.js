@@ -1,31 +1,44 @@
 /* eslint-disable */
 
-import React from 'react';
-
+import React from "react";
 import ReactDOM from "react-dom";
-import './index.css';
-import App from './App';
-import { Provider } from "react-redux";
-import reportWebVitals from './reportWebVitals';
-import store from "./redux/store";
-
-
+import "./index.css";
+import App from "./App";
 import { StrictMode } from "react";
-
 import { BrowserRouter } from "react-router-dom";
-
 import "./tailwind/tailwind.css";
 
+import "@rainbow-me/rainbowkit/styles.css";
+
+import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
+import { configureChains, createClient, goerli,WagmiConfig } from "wagmi";
+import { mainnet, polygon, optimism, arbitrum } from "wagmi/chains";
+import { alchemyProvider } from "wagmi/providers/alchemy";
+import { publicProvider } from "wagmi/providers/public";
 
 
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById("root")
+const { chains, provider, webSocketProvider } = configureChains(
+  [mainnet, goerli],
+  [publicProvider()]
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+const { connectors } = getDefaultWallets({
+  appName: "My RainbowKit App",
+  chains,
+});
+
+const client = createClient({
+  autoConnect: true,
+  connectors,
+  provider,
+});
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
 reportWebVitals();

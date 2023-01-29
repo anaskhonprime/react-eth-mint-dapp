@@ -1,6 +1,7 @@
 /* eslint-disable */
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 
 function Navbar() {
@@ -36,12 +37,9 @@ function Navbar() {
             </div>
           </div>
           <div className="flex md:order-2">
-            <button
-              onClick={connect}
-              type="button"
-              className=" hidden lg:flex font-medium text-base lg:font-semibold lg:text-xl py-2 px-5 text-center rounded-xl btn_primary text-gray-200 shadow-sm ">
-              {navbar[3]}
-            </button>
+            <div className=" hidden lg:flex">
+              <ConnectButton accountStatus="avatar" />
+            </div>
             <button
               data-collapse-toggle="navbar-sticky"
               type="button"
@@ -95,11 +93,13 @@ function Navbar() {
                   {navbar[2]}
                 </a>
               </li>
-              <button
-                onClick={connect}
-                className="flex lg:hidden font-medium text-xl lg:font-semibold lg:text-xl py-2 px-5 text-center rounded-xl btn_primary  text-gray-200 shadow-sm ">
-                {navbar[3]}
-              </button>
+              <div className="flex lg:hidden">
+                <ConnectButton
+                  label="Connect Wallet"
+                  chainStatus="none"
+                  showBalance={false}
+                />
+              </div>
             </ul>
           </div>
         </div>
