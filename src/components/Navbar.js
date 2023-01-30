@@ -39,7 +39,7 @@ function Navbar() {
           <div className="flex md:order-2">
             <div className=" hidden lg:flex">
               <ConnectButton accountStatus="avatar" />
-            </div>
+            </div>  
             <button
               data-collapse-toggle="navbar-sticky"
               type="button"
