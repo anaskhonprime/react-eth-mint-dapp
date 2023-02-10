@@ -12,14 +12,13 @@ import Footer from "./Footer";
 
 function Home() {
   return (
-    <div className="main_bg text-white py-5">
+    <div className="bg-gradient-to-r from-[#263278]  to-[#97377f] text-white py-5">
       <Navbar />
       <Header />
-      <Guide/>
-      <About/>
-      <Team/>
-      <Footer/>
-      
+      <Guide />
+      <About />
+      <Team />
+      <Footer />
     </div>
   );
 }

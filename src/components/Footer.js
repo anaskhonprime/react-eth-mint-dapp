@@ -23,10 +23,10 @@ function Footer() {
     <div>
       <div className="flex flex-col lg:flex-row px-2.5 py-3 my-32">
         <Reveal keyframes={fadeInLeft} duration={1000} delay={400}>
-          <div className="w-[25% mx-20">
-            <div className="flex flex-col px-10">
+          <div className=" mx-1 lg:mx-20">
+            <div className="flex flex-col px-5 lg:px-10">
               <h2 className="font-bold text-4xl py-5">NFTPRIME</h2>
-              <p className="text-xl font-medium py-3 pr-32 tracking-wide opacity-70">
+              <p className="text-xl font-medium py-3  lg:pr-32 tracking-wide opacity-70">
                 The project that inspired the <br></br> modern CryptoArt
                 movement
               </p>
@@ -36,7 +36,7 @@ function Footer() {
 
         <Reveal keyframes={fadeInDownShorter} duration={1000} delay={600}>
           <div className="flex-1 items-center justify-evenly">
-            <div className="flex flex-col">
+            <div className="hidden lg:flex flex-col">
               <h2 className="font-bold text-2xl cursor-pointer hover:text-purple-400 py-5">
                 About
               </h2>
@@ -60,7 +60,7 @@ function Footer() {
 
         <Reveal keyframes={fadeInDownShorter} duration={1000} delay={800}>
           <div className="flex-1 items-center justify-evenly">
-            <div className="flex flex-col">
+            <div className="hidden lg:flex flex-col">
               <h2 className="font-bold text-2xl cursor-pointer hover:text-purple-400 py-5">
                 Company
               </h2>
@@ -84,7 +84,7 @@ function Footer() {
 
         <Reveal keyframes={fadeInDownShorter} duration={1000} delay={1000}>
           <div className="flex-1 items-center justify-evenly">
-            <div className="flex flex-col">
+            <div className="hidden lg:flex flex-col">
               <h2 className="font-bold text-2xl cursor-pointer hover:text-purple-400 py-5">
                 Contact
               </h2>

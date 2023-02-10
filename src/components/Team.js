@@ -21,7 +21,7 @@ function Team() {
               Team Members
             </h1>
           </Reveal>
-          <Reveal keyframes={fadeInUp} duration={1000} delay={500}>
+          <Reveal keyframes={fadeInDownShorter} duration={1000} delay={500}>
             <p className="my-5 text-lg lg:text-xl opacity-70 leading-8 px-6 lg:px-10 text-gray-300  text-center lg:text-center">
               A team member is an employee who works in a group or team
             </p>
@@ -36,10 +36,10 @@ function Team() {
               keyframes={fadeInDownShorter}
               duration={1000}
               delay={300 * (i + 1)}>
-              <div className="max-w-md bg-[#ffffff1a] hover:bg-[#ffffff29] transition duration-300 m-3 lg:m-0 ease-in-out space-y-7 w-100 rounded-2xl shadow dark:bg-gray-800 dark:border-gray-700">
+              <div className="max-w-md bg-[#ffffff1a] hover:bg-[#ffffff29] transition duration-300 m-3 lg:m-0 ease-in-out pace-y-7 w-100 rounded-2xl shadow dark:bg-gray-800 dark:border-gray-700">
                 <div className="flex items-center justify-center ">
                   <img
-                    className=" p-2 w-100 h-48 lg:h-72 cover-fit rounded-2xl "
+                    className="p-2 w-100 h-48 lg:h-72 cover-fit rounded-2xl "
                     src={item.img}
                   />
                 </div>
@@ -80,7 +80,7 @@ function Team() {
         <div className="flex items-center justify-center my-5 lg:my-36">
           <div className="p-6 bg-gradient-to-r from-purple-500 to-pink-600 w-4/5 h-96 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <div className="text-left lg:text-center py-10 lg:py-16">
-              <Reveal keyframes={fadeInUp} duration={1000} delay={900}>
+              <Reveal keyframes={fadeInDownShorter} duration={1000} delay={900}>
                 <h5 className="mb-2 text-3xl lg:text-6xl px-3 lg:px-20 font-extrabold tracking-tight dark:text-white">
                   Get ready to collect our Prime NFTs
                 </h5>

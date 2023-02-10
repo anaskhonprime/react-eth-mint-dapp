@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 .main_bg {
     background: rgb(149, 72, 50);
-    background: linear-gradient( 95deg, rgba(151, 77, 55, 1) 0%, rgba(24, 30, 65, 1) 50%);
+    background: linear-gradient( 95deg, #97377f 0%, #181e41 50%);
 }
 
 .btn_primary {
