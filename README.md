@@ -1,4 +1,6 @@
-# This project Learning about web3 by using solidity for smart contracts deploy to Georli Testnet Network and using reactjs build frontend minting website.
+# React Prime Project
+
+## This project Learning about web3 by using solidity for smart contracts deploy to Georli Testnet Network and using reactjs build frontend minting website.
 
 ![my (1)](https://user-images.githubusercontent.com/112798358/218679431-dff5633d-01bf-4b68-a451-d8181b6e15a4.png)
 
